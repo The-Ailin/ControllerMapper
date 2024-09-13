@@ -470,7 +470,7 @@ namespace ControllerMapper
             // Perform scrolling if we have accumulated enough
             if (scrollUnitsVertical != 0)
             {
-                inputSimulator.Mouse.VerticalScroll(scrollUnitsVertical);
+                inputSimulator.Mouse.VerticalScroll(-scrollUnitsVertical);
                 accumulatedScrollVertical -= scrollUnitsVertical;
             }
 

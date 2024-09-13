@@ -97,22 +97,22 @@ Contributions are welcome! This is a learner project for me to learn controller 
 1. **Fork the Repository:**
    - Click the Fork button at the top of the repository page.
 
-    Create a Feature Branch:
+2. **Create a Feature Branch:**
 
    ```bash
    git checkout -b feature/YourFeatureName
 
-2. **Commit Your Changes:**
+3. **Commit Your Changes:**
 
    ```bash
    git commit -m "Add YourFeatureName"
 
-3. **Push to Your Fork:**
+4. **Push to Your Fork:**
 
    ```bash
    git push origin feature/YourFeatureName
 
-4. **Create a Pull Request:**
+5. **Create a Pull Request:**
    - Open a pull request against the main repository.
 
 ### License

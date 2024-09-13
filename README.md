@@ -26,7 +26,7 @@ A C# Windows Forms application that allows you to map Xbox One controller inputs
 
 1. **Download the Latest Release**:
 
-   - Go to the [Releases](https://github.com/yourusername/your-repo/releases) page.
+   - Go to the [Releases](https://github.com/The-Ailin/ControllerMapper/releases) page.
    - Download the `Controller.Mapper.v0.0.1.zip` file from the latest release.
 
 2. **Extract the Files**:
@@ -42,7 +42,7 @@ A C# Windows Forms application that allows you to map Xbox One controller inputs
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/yourusername/your-repo.git
+   git clone https://github.com/The-Ailin/ControllerMapper.git
 
 2. **Open the Solution in Visual Studio:**
    - Navigate to the project directory.

@@ -356,14 +356,16 @@ namespace ControllerMapper
                 VirtualKeyCode.VK_P, VirtualKeyCode.VK_Q, VirtualKeyCode.VK_R,
                 VirtualKeyCode.VK_S, VirtualKeyCode.VK_T, VirtualKeyCode.VK_U,
                 VirtualKeyCode.VK_V, VirtualKeyCode.VK_W, VirtualKeyCode.VK_X,
-                VirtualKeyCode.VK_Y, VirtualKeyCode.VK_Z,
-                VirtualKeyCode.VK_0, VirtualKeyCode.VK_1, VirtualKeyCode.VK_2,
-                VirtualKeyCode.VK_3, VirtualKeyCode.VK_4, VirtualKeyCode.VK_5,
-                VirtualKeyCode.VK_6, VirtualKeyCode.VK_7, VirtualKeyCode.VK_8,
-                VirtualKeyCode.VK_9,
-                VirtualKeyCode.SPACE, VirtualKeyCode.RETURN, VirtualKeyCode.ESCAPE,
+                VirtualKeyCode.VK_Y, VirtualKeyCode.VK_Z, VirtualKeyCode.VK_0, 
+                VirtualKeyCode.VK_1, VirtualKeyCode.VK_2, VirtualKeyCode.VK_3, 
+                VirtualKeyCode.VK_4, VirtualKeyCode.VK_5, VirtualKeyCode.VK_6, 
+                VirtualKeyCode.VK_7, VirtualKeyCode.VK_8, VirtualKeyCode.VK_9, 
+                VirtualKeyCode.SPACE, VirtualKeyCode.RETURN, VirtualKeyCode.ESCAPE, 
                 VirtualKeyCode.TAB, VirtualKeyCode.SHIFT, VirtualKeyCode.CONTROL, 
-                VirtualKeyCode.SUBTRACT, VirtualKeyCode.ADD
+                VirtualKeyCode.SUBTRACT, VirtualKeyCode.ADD, VirtualKeyCode.UP,
+                VirtualKeyCode.RIGHT, VirtualKeyCode.DOWN, VirtualKeyCode.LEFT, 
+                VirtualKeyCode.BROWSER_BACK, VirtualKeyCode.BROWSER_FORWARD, VirtualKeyCode.VOLUME_DOWN,
+                VirtualKeyCode.VOLUME_UP, VirtualKeyCode.VOLUME_MUTE
             };
 
             foreach (var keyCode in commonKeys)
@@ -372,7 +374,7 @@ namespace ControllerMapper
                 {
                     ActionType = ActionType.KeyboardKey,
                     KeyCode = keyCode,
-                    DisplayName = $"Key: {keyCode}"
+                    DisplayName = $"Key: {GetKeyDisplayName(keyCode)}"
                 });
             }
 
@@ -389,7 +391,51 @@ namespace ControllerMapper
 
             cbMnK.DataSource = inputActionItems;
             cbMnK.DisplayMember = "DisplayName";
+            cbMnK.ValueMember = "KeyCode";
         }
+
+        private string GetKeyDisplayName(VirtualKeyCode keyCode)
+        {
+            // Handle common prefixes like VK_A, VK_1, etc.
+            string name = keyCode.ToString();
+
+            if (name.StartsWith("VK_"))
+            {
+                // Remove the VK_ prefix to display simple letter keys
+                return name.Substring(3);
+            }
+
+            // Handle specific special keys that should be displayed more clearly
+            switch (keyCode)
+            {
+                case VirtualKeyCode.RETURN:
+                    return "Enter";
+                case VirtualKeyCode.SPACE:
+                    return "Space";
+                case VirtualKeyCode.TAB:
+                    return "Tab";
+                case VirtualKeyCode.ESCAPE:
+                    return "Escape";
+                case VirtualKeyCode.SHIFT:
+                    return "Shift";
+                case VirtualKeyCode.CONTROL:
+                    return "Ctrl";
+                case VirtualKeyCode.MENU:
+                    return "Alt";
+                case VirtualKeyCode.LEFT:
+                    return "Left Arrow";
+                case VirtualKeyCode.RIGHT:
+                    return "Right Arrow";
+                case VirtualKeyCode.UP:
+                    return "Up Arrow";
+                case VirtualKeyCode.DOWN:
+                    return "Down Arrow";
+                // Add more special cases if needed
+                default:
+                    return name; // Return the default string if no special case is found
+            }
+        }
+
 
         private void buttonSet_Click(object sender, EventArgs e)
         {
